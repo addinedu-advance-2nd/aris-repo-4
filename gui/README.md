@@ -1,4 +1,4 @@
 # aris-repo-4
 
 
-# pyQT Directory
+# GUI(pyQt) Directory
