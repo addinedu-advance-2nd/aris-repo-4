@@ -1,3 +1,4 @@
+#pip3 install mysql-connector-python
 import mysql.connector
 
 # MySQL 서버에 연결
@@ -25,3 +26,13 @@ for row in result:
 # 연결과 커서 닫기
 cursor.close()
 conn.close()
+
+
+
+def insert(self, vo):
+    cur = conn.cursor()
+    sql = "insert into members values(%s, %s, %s, %s)"
+    vals = (vo.id, vo.pwd, vo.name, vo.email)
+    cur.execute(sql, vals)
+    self.conn.commit()
+    self.conn.close()
