@@ -1,0 +1,100 @@
+import sys
+import cv2
+import numpy as np
+import time
+import imutils
+from matplotlib import pyplot as plt
+
+# Function for stereo vision and depth estimation
+import triangulation as tri
+import calibration
+
+# Mediapipe for hand detection
+import mediapipe as mp
+import time
+
+mp_hands = mp.solutions.hands
+mp_draw = mp.solutions.drawing_utils
+
+cap_right = cv2.VideoCapture(2)
+cap_left = cv2.VideoCapture(4)
+
+frame_rate = 30
+B = 9  # [cm]
+f = 1  # [mm]
+alpha = 95  # [degree of angle]
+
+with mp_hands.Hands(min_detection_confidence=0.7, max_num_hands=4) as hands:
+    while cap_right.isOpened() and cap_left.isOpened():
+
+        success_right, frame_right = cap_right.read()
+        success_left, frame_left = cap_left.read()
+
+        # Calibration
+        frame_right, frame_left = calibration.undistortRectify(frame_right, frame_left)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+        if not success_right or not success_left:
+            break
+
+        else:
+            start = time.time()
+
+            frame_right = cv2.cvtColor(frame_right, cv2.COLOR_BGR2RGB)
+            frame_left = cv2.cvtColor(frame_left, cv2.COLOR_BGR2RGB)
+
+            results_right = hands.process(frame_right)
+            results_left = hands.process(frame_left)
+
+            frame_right = cv2.cvtColor(frame_right, cv2.COLOR_RGB2BGR)
+            frame_left = cv2.cvtColor(frame_left, cv2.COLOR_RGB2BGR)
+
+            # Calculating depth
+            center_point_right = (0, 0)
+            center_point_left = (0, 0)
+
+            if results_right.multi_hand_landmarks:
+                for hand_landmarks in results_right.multi_hand_landmarks:
+                    mp_draw.draw_landmarks(frame_right, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+                    
+                    # Get the center of the palm (landmark 9)
+                    h, w, _ = frame_right.shape
+                    center_point_right = (int(hand_landmarks.landmark[9].x * w), int(hand_landmarks.landmark[9].y * h))
+
+            if results_left.multi_hand_landmarks:
+                for hand_landmarks in results_left.multi_hand_landmarks:
+                    mp_draw.draw_landmarks(frame_left, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+                    
+                    # Get the center of the palm (landmark 9)
+                    h, w, _ = frame_left.shape
+                    center_point_left = (int(hand_landmarks.landmark[9].x * w), int(hand_landmarks.landmark[9].y * h))
+
+            if not results_right.multi_hand_landmarks or not results_left.multi_hand_landmarks:
+                cv2.putText(frame_right, "TRACKING LOST", (75, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1)
+                cv2.putText(frame_left, "TRACKING LOST", (75, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1)
+            else:
+                depth = tri.find_depth(center_point_right, center_point_left, frame_right, frame_left, B, f, alpha)
+                
+                cv2.putText(frame_right, "Distance: " + str(round(depth, 1)) + " cm", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 1)
+                cv2.putText(frame_left, "Distance: " + str(round(depth, 1)) + " cm", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 1)
+
+                print("Depth: ", str(round(depth, 2)))
+
+            end = time.time()
+            totalTime = end - start
+            fps = 2 / totalTime
+
+            cv2.putText(frame_right, f'FPS: {int(fps)}', (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 1)
+            cv2.putText(frame_left, f'FPS: {int(fps)}', (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 1)
+
+            cv2.imshow("frame right", frame_right)
+            cv2.imshow("frame left", frame_left)
+
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
+cap_right.release()
+cap_left.release()
+cv2.destroyAllWindows()
