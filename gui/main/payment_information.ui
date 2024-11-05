@@ -27,6 +27,19 @@
      <string>이전 페이지</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>120</y>
+      <width>871</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>결제가 진행 중입니다.</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
