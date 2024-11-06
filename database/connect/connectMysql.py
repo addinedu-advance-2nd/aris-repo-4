@@ -3,7 +3,7 @@ import mysql.connector
 
 # MySQL 서버에 연결
 conn = mysql.connector.connect(
-    host='localhost',      # 호스트 이름
+    host='192.168.0.123',      # 호스트 이름
     user='robopalz',       # MySQL 사용자 이름
     password='1234',   # MySQL 사용자 비밀번호
     database='ROBOPALZ'  # 연결할 데이터베이스 이름
