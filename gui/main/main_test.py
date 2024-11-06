@@ -2,6 +2,7 @@
 
 import sys
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
+from admin_page import AdminPage
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -12,7 +13,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.page2 = uic.loadUi("./select_ice_cream_page.ui")
         self.page3 = uic.loadUi("./payment_information_page.ui")
         self.page4 = uic.loadUi("./wait_page_page.ui")
-        self.page5 = uic.loadUi("./admin_page.ui")
+        self.page5 = AdminPage()
 
         # 스택 위젯 생성 및 중앙 위젯으로 설정
         self.stacked_widget = QtWidgets.QStackedWidget(self)
@@ -50,6 +51,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setup_button_group(self.topping_buttons, "orange", multi_select=True)
         self.setup_button_group(self.method_buttons, "cyan", multi_select=False)
 
+        # 페이지 전환 버튼 연결 (예시로 이미지 클릭 시 다른 페이지로 이동)
+        self.page1.logo.mouseDoubleClickEvent = self.on_image_click
+
         # 창을 최대화된 상태로 표시
         self.showMaximized()
 
@@ -80,7 +84,13 @@ class MainWindow(QtWidgets.QMainWindow):
             scale_factor = max(min_size / pixmap_item.pixmap().width(), min_size / pixmap_item.pixmap().height())
             graphics_view.scale(scale_factor, scale_factor)
 
-
+    def on_image_click(self, event):
+        # 이미지 더블클릭 시 관리자 페이지로 전환
+        print("Logo clicked! Switching to AdminPage.")
+        #self.stacked_widget.setCurrentWidget(self.page5)  # 기존 페이지 5를 AdminPage로 전환
+        if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
+            self.admin_page_window = AdminPage()  # AdminPage 객체 생성
+            self.admin_page_window.show()  # AdminPage 창 열기
 
 
     def resizeEvent(self, event):
