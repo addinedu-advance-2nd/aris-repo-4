@@ -1,0 +1,3 @@
+/home/aa/robot_controller/build/robot_msgs/rosidl_adapter/robot_msgs:action/RobotOrder.idl
+/home/aa/robot_controller/build/robot_msgs/rosidl_adapter/robot_msgs:msg/RobotState.idl
+/home/aa/robot_controller/build/robot_msgs/rosidl_adapter/robot_msgs:msg/UserOrder.idl

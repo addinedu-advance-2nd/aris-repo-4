@@ -1,0 +1,2 @@
+Invoking command in '/home/aa/robot_controller/build/robot_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/aa/robot_controller/src/robot_msgs -DCMAKE_INSTALL_PREFIX=/home/aa/robot_controller/install/robot_msgs
+Invoked command in '/home/aa/robot_controller/build/robot_msgs' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/aa/robot_controller/src/robot_msgs -DCMAKE_INSTALL_PREFIX=/home/aa/robot_controller/install/robot_msgs

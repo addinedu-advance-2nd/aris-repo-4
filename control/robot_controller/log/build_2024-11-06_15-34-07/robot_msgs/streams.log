@@ -1,0 +1,289 @@
+[0.017s] Invoking command in '/home/aa/robot_controller/build/robot_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aa/robot_controller/install/robotarm_control_package:/opt/ros/humble /usr/bin/cmake --build /home/aa/robot_controller/build/robot_msgs -- -j16 -l16
+[0.045s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.143s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.144s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.146s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.166s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.399s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[0.542s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.730s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.748s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[0.765s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.765s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[0.765s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[0.777s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.784s] -- Added test 'lint_cmake' to check CMake code style
+[0.785s] -- Added test 'xmllint' to check XML markup files
+[0.786s] -- Configuring done
+[0.815s] -- Generating done
+[0.818s] -- Build files have been written to: /home/aa/robot_controller/build/robot_msgs
+[0.841s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[0.849s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[0.859s] [  4%] Built target ament_cmake_python_copy_robot_msgs
+[1.056s] running egg_info
+[1.056s] writing robot_msgs.egg-info/PKG-INFO
+[1.056s] writing dependency_links to robot_msgs.egg-info/dependency_links.txt
+[1.057s] writing top-level names to robot_msgs.egg-info/top_level.txt
+[1.058s] reading manifest file 'robot_msgs.egg-info/SOURCES.txt'
+[1.059s] writing manifest file 'robot_msgs.egg-info/SOURCES.txt'
+[1.082s] [  4%] Built target ament_cmake_python_build_robot_msgs_egg
+[1.206s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_generator_c[0m
+[1.213s] [  4%] Built target robot_msgs__cpp
+[1.216s] [ 10%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/robot_msgs/msg/detail/robot_state__functions.c.o[0m
+[1.217s] [ 10%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/robot_msgs/action/detail/robot_order__functions.c.o[0m
+[1.217s] [ 10%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_generator_c.dir/rosidl_generator_c/robot_msgs/msg/detail/user_order__functions.c.o[0m
+[1.222s] [ 17%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.222s] [ 17%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.222s] [ 17%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.312s] [ 19%] [32m[1mLinking C shared library librobot_msgs__rosidl_generator_c.so[0m
+[1.346s] [ 19%] Built target robot_msgs__rosidl_generator_c
+[1.356s] [ 25%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.356s] [ 25%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.356s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.471s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_cpp[0m
+[1.484s] [ 31%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_msgs/msg/robot_state__type_support.cpp.o[0m
+[1.485s] [ 31%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_msgs/msg/user_order__type_support.cpp.o[0m
+[1.485s] [ 31%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_msgs/action/robot_order__type_support.cpp.o[0m
+[1.518s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_introspection_cpp[0m
+[1.531s] [ 34%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_msgs/action/detail/robot_order__type_support.cpp.o[0m
+[1.532s] [ 36%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_msgs/msg/detail/robot_state__type_support.cpp.o[0m
+[1.537s] [ 38%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_msgs/msg/detail/user_order__type_support.cpp.o[0m
+[1.571s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_fastrtps_cpp[0m
+[1.587s] [ 44%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_msgs/msg/detail/dds_fastrtps/robot_state__type_support.cpp.o[0m
+[1.587s] [ 44%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_msgs/action/detail/dds_fastrtps/robot_order__type_support.cpp.o[0m
+[1.587s] [ 44%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_msgs/msg/detail/dds_fastrtps/user_order__type_support.cpp.o[0m
+[1.624s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_c[0m
+[1.638s] [ 48%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_msgs/msg/robot_state__type_support.cpp.o[0m
+[1.638s] [ 48%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_msgs/action/robot_order__type_support.cpp.o[0m
+[1.641s] [ 51%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_msgs/msg/user_order__type_support.cpp.o[0m
+[1.688s] [ 53%] [32m[1mLinking CXX shared library librobot_msgs__rosidl_typesupport_c.so[0m
+[1.734s] [ 53%] Built target robot_msgs__rosidl_typesupport_c
+[1.758s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_introspection_c[0m
+[1.768s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_fastrtps_c[0m
+[1.770s] [ 57%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_msgs/action/detail/robot_order__type_support.c.o[0m
+[1.770s] [ 57%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_msgs/msg/detail/robot_state__type_support.c.o[0m
+[1.772s] [ 59%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_msgs/msg/detail/user_order__type_support.c.o[0m
+[1.784s] [ 65%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_msgs/msg/detail/user_order__type_support_c.cpp.o[0m
+[1.784s] [ 65%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_msgs/action/detail/robot_order__type_support_c.cpp.o[0m
+[1.784s] [ 65%] [32mBuilding CXX object CMakeFiles/robot_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_msgs/msg/detail/robot_state__type_support_c.cpp.o[0m
+[1.820s] [ 68%] [32m[1mLinking C shared library librobot_msgs__rosidl_typesupport_introspection_c.so[0m
+[1.856s] [ 68%] Built target robot_msgs__rosidl_typesupport_introspection_c
+[2.026s] [ 70%] [32m[1mLinking CXX shared library librobot_msgs__rosidl_typesupport_cpp.so[0m
+[2.067s] [ 70%] Built target robot_msgs__rosidl_typesupport_cpp
+[2.098s] [ 72%] [32m[1mLinking CXX shared library librobot_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.116s] [ 74%] [32m[1mLinking CXX shared library librobot_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[2.158s] [ 76%] [32m[1mLinking CXX shared library librobot_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[2.172s] [ 76%] Built target robot_msgs__rosidl_typesupport_fastrtps_cpp
+[2.187s] [ 76%] Built target robot_msgs__rosidl_typesupport_fastrtps_c
+[2.223s] [ 76%] Built target robot_msgs__rosidl_typesupport_introspection_cpp
+[2.243s] [ 76%] Built target robot_msgs
+[2.262s] [ 78%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.860s] [ 78%] Built target robot_msgs__py
+[2.870s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_generator_py[0m
+[2.882s] [ 82%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/robot_msgs/action/_robot_order_s.c.o[0m
+[2.882s] [ 82%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/robot_msgs/msg/_robot_state_s.c.o[0m
+[2.882s] [ 85%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_generator_py.dir/rosidl_generator_py/robot_msgs/msg/_user_order_s.c.o[0m
+[2.981s] [ 87%] [32m[1mLinking C shared library rosidl_generator_py/robot_msgs/librobot_msgs__rosidl_generator_py.so[0m
+[3.017s] [ 87%] Built target robot_msgs__rosidl_generator_py
+[3.026s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_c__pyext[0m
+[3.026s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_fastrtps_c__pyext[0m
+[3.026s] [35m[1mConsolidate compiler generated dependencies of target robot_msgs__rosidl_typesupport_introspection_c__pyext[0m
+[3.037s] [ 91%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/robot_msgs/_robot_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.037s] [ 91%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/robot_msgs/_robot_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.037s] [ 93%] [32mBuilding C object CMakeFiles/robot_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/robot_msgs/_robot_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[3.129s] [100%] [32m[1mLinking C shared library rosidl_generator_py/robot_msgs/robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.130s] [100%] [32m[1mLinking C shared library rosidl_generator_py/robot_msgs/robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.130s] [100%] [32m[1mLinking C shared library rosidl_generator_py/robot_msgs/robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.164s] [100%] Built target robot_msgs__rosidl_typesupport_c__pyext
+[3.164s] [100%] Built target robot_msgs__rosidl_typesupport_fastrtps_c__pyext
+[3.164s] [100%] Built target robot_msgs__rosidl_typesupport_introspection_c__pyext
+[3.175s] Invoked command in '/home/aa/robot_controller/build/robot_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aa/robot_controller/install/robotarm_control_package:/opt/ros/humble /usr/bin/cmake --build /home/aa/robot_controller/build/robot_msgs -- -j16 -l16
+[3.288s] Invoking command in '/home/aa/robot_controller/build/robot_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aa/robot_controller/install/robotarm_control_package:/opt/ros/humble /usr/bin/cmake --install /home/aa/robot_controller/build/robot_msgs
+[3.294s] -- Install configuration: ""
+[3.295s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/ament_index/resource_index/rosidl_interfaces/robot_msgs
+[3.295s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs
+[3.295s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action
+[3.295s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail
+[3.295s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__functions.c
+[3.295s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__struct.h
+[3.295s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__functions.h
+[3.295s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__type_support.h
+[3.295s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/robot_order.h
+[3.295s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg
+[3.295s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/robot_state.h
+[3.295s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__type_support.h
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__functions.c
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__struct.h
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__functions.h
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__struct.h
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__functions.h
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__type_support.h
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__functions.c
+[3.296s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/user_order.h
+[3.296s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/rosidl_generator_c__visibility_control.h
+[3.297s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/library_path.sh
+[3.297s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/library_path.dsv
+[3.297s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_generator_c.so
+[3.297s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_generator_c.so" to ""
+[3.297s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs
+[3.297s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action
+[3.297s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail
+[3.297s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__rosidl_typesupport_fastrtps_c.h
+[3.297s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg
+[3.297s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail
+[3.298s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__rosidl_typesupport_fastrtps_c.h
+[3.298s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_c.h
+[3.298s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[3.298s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_fastrtps_c.so
+[3.298s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[3.298s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs
+[3.298s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action
+[3.298s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail
+[3.298s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__rosidl_typesupport_introspection_c.h
+[3.298s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__type_support.c
+[3.298s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg
+[3.299s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[3.299s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail
+[3.299s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_c.h
+[3.299s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__rosidl_typesupport_introspection_c.h
+[3.299s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__type_support.c
+[3.299s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__type_support.c
+[3.299s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_introspection_c.so
+[3.299s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_introspection_c.so" to ""
+[3.299s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_c.so
+[3.300s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_c.so" to ""
+[3.300s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs
+[3.300s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action
+[3.300s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/robot_order.hpp
+[3.300s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail
+[3.300s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__builder.hpp
+[3.300s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__traits.hpp
+[3.300s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__struct.hpp
+[3.301s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/user_order.hpp
+[3.301s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__builder.hpp
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__traits.hpp
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__traits.hpp
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__builder.hpp
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__struct.hpp
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__struct.hpp
+[3.301s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/robot_state.hpp
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/dds_fastrtps
+[3.302s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__rosidl_typesupport_fastrtps_cpp.hpp
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/dds_fastrtps
+[3.302s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__rosidl_typesupport_fastrtps_cpp.hpp
+[3.302s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__rosidl_typesupport_fastrtps_cpp.hpp
+[3.302s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[3.302s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_fastrtps_cpp.so
+[3.303s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[3.303s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs
+[3.303s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action
+[3.303s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail
+[3.303s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__rosidl_typesupport_introspection_cpp.hpp
+[3.303s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/action/detail/robot_order__type_support.cpp
+[3.303s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg
+[3.303s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail
+[3.303s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__rosidl_typesupport_introspection_cpp.hpp
+[3.303s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/user_order__type_support.cpp
+[3.303s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__type_support.cpp
+[3.304s] -- Installing: /home/aa/robot_controller/install/robot_msgs/include/robot_msgs/robot_msgs/msg/detail/robot_state__rosidl_typesupport_introspection_cpp.hpp
+[3.304s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_introspection_cpp.so
+[3.304s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[3.304s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_cpp.so
+[3.305s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_typesupport_cpp.so" to ""
+[3.305s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/pythonpath.sh
+[3.305s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/pythonpath.dsv
+[3.305s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs-0.0.0-py3.10.egg-info
+[3.305s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs-0.0.0-py3.10.egg-info/PKG-INFO
+[3.305s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs-0.0.0-py3.10.egg-info/top_level.txt
+[3.305s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs-0.0.0-py3.10.egg-info/dependency_links.txt
+[3.305s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs-0.0.0-py3.10.egg-info/SOURCES.txt
+[3.305s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs
+[3.305s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/action
+[3.305s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/action/_robot_order_s.c
+[3.306s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/action/__init__.py
+[3.306s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/action/_robot_order.py
+[3.306s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.306s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.306s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/_robot_msgs_s.ep.rosidl_typesupport_c.c
+[3.306s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.306s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/_robot_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[3.307s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/__init__.py
+[3.307s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/librobot_msgs__rosidl_generator_py.so
+[3.307s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/_robot_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[3.307s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg
+[3.307s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/_robot_state_s.c
+[3.307s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/_robot_state.py
+[3.307s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/_user_order.py
+[3.307s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/__init__.py
+[3.308s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/_user_order_s.c
+[3.337s] Listing '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs'...
+[3.338s] Compiling '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/__init__.py'...
+[3.338s] Listing '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/action'...
+[3.338s] Compiling '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/action/__init__.py'...
+[3.338s] Compiling '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/action/_robot_order.py'...
+[3.338s] Listing '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg'...
+[3.338s] Compiling '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/__init__.py'...
+[3.338s] Compiling '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/_robot_state.py'...
+[3.338s] Compiling '/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/msg/_user_order.py'...
+[3.342s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.342s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.342s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.342s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.343s] -- Installing: /home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.343s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/local/lib/python3.10/dist-packages/robot_msgs/robot_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.343s] -- Installing: /home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_generator_py.so
+[3.343s] -- Set runtime path of "/home/aa/robot_controller/install/robot_msgs/lib/librobot_msgs__rosidl_generator_py.so" to ""
+[3.343s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/action/RobotOrder.idl
+[3.343s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/msg/RobotState.idl
+[3.344s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/msg/UserOrder.idl
+[3.344s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/action/RobotOrder.action
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/msg/RobotState.msg
+[3.344s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/msg/UserOrder.msg
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/ament_index/resource_index/package_run_dependencies/robot_msgs
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/ament_index/resource_index/parent_prefix_path/robot_msgs
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/ament_prefix_path.sh
+[3.344s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/ament_prefix_path.dsv
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/path.sh
+[3.344s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/environment/path.dsv
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/local_setup.bash
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/local_setup.sh
+[3.344s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/local_setup.zsh
+[3.344s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/local_setup.dsv
+[3.344s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/package.dsv
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/ament_index/resource_index/packages/robot_msgs
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_generator_cExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_generator_cExport-noconfig.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_introspection_cExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_cExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_generator_cppExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_cppExport.cmake
+[3.345s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_generator_pyExport.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/export_robot_msgs__rosidl_generator_pyExport-noconfig.cmake
+[3.346s] -- Installing: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/rosidl_cmake-extras.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgsConfig.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/cmake/robot_msgsConfig-version.cmake
+[3.346s] -- Up-to-date: /home/aa/robot_controller/install/robot_msgs/share/robot_msgs/package.xml
+[3.348s] Invoked command in '/home/aa/robot_controller/build/robot_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aa/robot_controller/install/robotarm_control_package:/opt/ros/humble /usr/bin/cmake --install /home/aa/robot_controller/build/robot_msgs

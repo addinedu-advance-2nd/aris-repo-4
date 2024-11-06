@@ -1,0 +1,8 @@
+{
+  "package_name": "robot_msgs",
+  "non_idl_tuples": [
+    "/home/aa/robot_controller/src/robot_msgs:action/RobotOrder.action",
+    "/home/aa/robot_controller/src/robot_msgs:msg/RobotState.msg",
+    "/home/aa/robot_controller/src/robot_msgs:msg/UserOrder.msg"
+  ]
+}

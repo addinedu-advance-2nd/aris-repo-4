@@ -21,7 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'robotarm_controller_node = robotarm_control_package.robotarm_controller_node:main',
-            'robotarm_publisher_node = robotarm_control_package.robotarm_publisher_node:main'
+            'task_manager = robotarm_control_package.task_manager:main'
         ],
     },
 )
