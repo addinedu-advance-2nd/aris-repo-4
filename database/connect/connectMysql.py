@@ -9,6 +9,8 @@ conn = mysql.connector.connect(
     database='ROBOPALZ'  # 연결할 데이터베이스 이름
 )
 
+
+"""
 # 커서 생성
 cursor = conn.cursor()
 
@@ -28,11 +30,5 @@ cursor.close()
 conn.close()
 
 
+"""
 
-def insert(self, vo):
-    cur = conn.cursor()
-    sql = "insert into members values(%s, %s, %s, %s)"
-    vals = (vo.id, vo.pwd, vo.name, vo.email)
-    cur.execute(sql, vals)
-    self.conn.commit()
-    self.conn.close()
