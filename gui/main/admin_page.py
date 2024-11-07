@@ -22,8 +22,8 @@ class AdminPage(QtWidgets.QMainWindow):  # QMainWindow로 변경
         # 콤보박스 설정
         print(selectIceCream())
 
-        #ice_cream_list = (" ", "초코 아이스크림", "딸기 아이스크림", "바닐라 아이스크림", "품절")
-        ice_cream_list = str(selectIceCream())
+        ice_cream_list = (" ", "초코 아이스크림", "딸기 아이스크림", "바닐라 아이스크림", "품절")
+       # ice_cream_list = str(selectIceCream())
         topping_list = (" ", "초코", "캬라멜", "딸기", "품절")
         self.setup_combo_box(self.page5.ice_cream_combobox_1, ice_cream_list, "아이스크림 1")
         self.setup_combo_box(self.page5.ice_cream_combobox_2, ice_cream_list, "아이스크림 2")
