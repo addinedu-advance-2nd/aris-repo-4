@@ -1,7 +1,7 @@
 # Request
 string order_type
 int32 tray_num
-int32 topping_num
+int32[] topping_num
 int32 topping_type
 ---
 # Result
