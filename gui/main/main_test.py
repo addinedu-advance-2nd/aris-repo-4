@@ -6,6 +6,7 @@ from admin_page import AdminPage
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox
+from PyQt5.QtGui import *
 
 '''
 # Order_ice_cream 클래스 정의
@@ -103,9 +104,19 @@ class MainWindow(QtWidgets.QMainWindow):
         self.stacked_widget.addWidget(self.page5)  # 관리자 페이지
         
         # 이미지 추가 (그래픽 뷰에 이미지 삽입)
-        self.add_image_to_label("./image/last_pic.png", self.page4.last_pic)
         self.add_image_to_label("./image/logo.png", self.page1.logo)
         self.add_image_to_label("./image/main_pic.png", self.page1.main_pic)
+        #self.add_image_to_label("./image/last_pic.png", self.page4.last_pic)
+
+        self.pixmap = QPixmap()
+        self.pixmap.load("./image/last_pic.png")
+
+        self.page4.last_pic.setPixmap(self.pixmap)
+        self.page4.last_pic.resize(self.pixmap.width(), self.pixmap.height())
+
+
+
+
 
         # 페이지 전환을 위한 버튼 클릭 이벤트 설정
         self.page1.select_ice_cream.clicked.connect(self.show_page2)
@@ -113,10 +124,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.page2.select_complete.clicked.connect(self.show_page3)
         self.page3.back_button.clicked.connect(self.show_page2)
         
-        # 페이지3에서 페이지4로 1초 후에 이동하도록 타이머 설정
-        self.timer = QtCore.QTimer(self)
-        self.timer.setSingleShot(True)
-        self.timer.timeout.connect(self.show_page4)        
+        # 다음 페이지로 이동하도록 타이머 설정
+        self.timer_1 = QtCore.QTimer(self)
+        self.timer_1.setSingleShot(True)
+        self.timer_1.timeout.connect(self.show_page4)
+
+        self.timer_2 = QtCore.QTimer(self)
+        self.timer_2.setSingleShot(True)
+        self.timer_2.timeout.connect(self.show_page1)          
         
 
         # 그룹별 버튼 설정
@@ -183,9 +198,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # 이미지 더블클릭 시 관리자 페이지로 전환
         print("Logo clicked! Switching to AdminPage.")
         #self.stacked_widget.setCurrentWidget(self.page5)  # 기존 페이지 5를 AdminPage로 전환
-        if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
-            self.admin_page_window = AdminPage()  # AdminPage 객체 생성
-            self.admin_page_window.show()  # AdminPage 창 열기
+        #if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
+        self.admin_page_window = AdminPage()  # AdminPage 객체 생성
+        self.admin_page_window.show()  # AdminPage 창 열기
     
 
     def resizeEvent(self, event):
@@ -239,10 +254,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def show_page3(self):
         self.stacked_widget.setCurrentWidget(self.page3)
-        self.timer.start(1000)  # 1초 후에 show_page4 호출
+        self.timer_1.start(1000)  # 1초 후에 show_page4 호출
 
     def show_page4(self):
         self.stacked_widget.setCurrentWidget(self.page4)
+        self.timer_2.start(5000)  # 5초 후에 show_page4 호출
 
     def show_page5(self):
         self.stacked_widget.setCurrentWidget(self.page5)

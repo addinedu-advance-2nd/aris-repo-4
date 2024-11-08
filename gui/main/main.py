@@ -190,9 +190,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # 이미지 더블클릭 시 관리자 페이지로 전환
         print("Logo clicked! Switching to AdminPage.")
         #self.stacked_widget.setCurrentWidget(self.page5)  # 기존 페이지 5를 AdminPage로 전환
-        if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
-            self.admin_page_window = AdminPage()  # AdminPage 객체 생성
-            self.admin_page_window.show()  # AdminPage 창 열기
+        #if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
+        self.admin_page_window = AdminPage()  # AdminPage 객체 생성
+        self.admin_page_window.show()  # AdminPage 창 열기
     
 
     def resizeEvent(self, event):
