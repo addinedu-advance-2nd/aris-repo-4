@@ -102,6 +102,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.stacked_widget.addWidget(self.page3)
         self.stacked_widget.addWidget(self.page4)
         self.stacked_widget.addWidget(self.page5)  # 관리자 페이지
+
+        #주문 선택 버튼 비활성화
+        self.page2.select_complete.setEnabled(False)
         
         # 이미지 추가 (그래픽 뷰에 이미지 삽입)
         self.add_image_to_label("./image/logo.png", self.page1.logo)
