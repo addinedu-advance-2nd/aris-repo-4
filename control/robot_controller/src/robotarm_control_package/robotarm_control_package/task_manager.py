@@ -27,7 +27,7 @@ class TaskManager(Node):
             print('order queue :',len(self.order_queue))
             self.send_goal(self.order_queue[0])
         elif self.order_queue[0][0] == 'icecreaming' and action == 'icecreaming':
-            self.order_queue.append(action)
+            self.order_queue.append([action, icecream, topping, topping_type])
             print('order queue :',len(self.order_queue))
 
 

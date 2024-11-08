@@ -121,7 +121,7 @@ class RobotMain(object):
             return
         
         # Joint Motion
-        self._angle_speed = 80
+        self._angle_speed = 50
         self._angle_acc = 200
 
         print('motion_home start')
@@ -143,15 +143,8 @@ class RobotMain(object):
     def motion_grab_capsule(self, goal_handle, tray_num):
 
         feedback_msg = RobotOrder.Feedback()
-        feedback_msg.message = f'grab_capsule{tray_num}_start'
+        feedback_msg.message = f'grab_capsule_start'
         goal_handle.publish_feedback(feedback_msg)
-
-        code = self._arm.set_cgpio_analog(0, 5)
-        if not self._check_code(code, 'set_cgpio_analog'):
-            return
-        code = self._arm.set_cgpio_analog(1, 5)
-        if not self._check_code(code, 'set_cgpio_analog'):
-            return
 
         # Joint Motion
         self._angle_speed = 100
@@ -160,53 +153,28 @@ class RobotMain(object):
         self._tcp_speed = 100
         self._tcp_acc = 1000
 
-        code = self._arm.close_lite6_gripper()
-        if not self._check_code(code, 'close_lite6_gripper'):
-            return
-        time.sleep(1)
         code = self._arm.open_lite6_gripper()
         if not self._check_code(code, 'open_lite6_gripper'):
             return
-        time.sleep(1)
+        time.sleep(1.5)
         code = self._arm.stop_lite6_gripper()
         if not self._check_code(code, 'stop_lite6_gripper'):
             return
         time.sleep(1)
-
-        #code = self._arm.set_servo_angle(angle=[175.4, 28.7, 23.8, 84.5, 94.7, -5.6], speed=self._angle_speed,
-        #                                 mvacc=self._angle_acc, wait=True, radius=0.0)
-        #if not self._check_code(code, 'set_servo_angle'):
-        #    return
         
-        if tray_num == 1:
-            code = self._arm.set_servo_angle(angle=[166.1, 30.2, 25.3, 75.3, 93.9, -5.4], speed=self._angle_speed, mvacc=self._angle_acc, wait=True, radius=0.0)
-            if not self._check_code(code, 'set_servo_angle'):
-                return
-            #code = self._arm.set_position(*[-162.5, -21.0, 187.6, -7.7, 84.8, -97.3], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
-            #if not self._check_code(code, 'set_position'):
-            #    return
-        else :
-            
-            code = self._arm.set_servo_angle(angle=[166.1, 30.2, 25.3, 75.3, 93.9, -5.4], speed=self._angle_speed, mvacc=self._angle_acc, wait=True, radius=0.0)
-            if not self._check_code(code, 'set_servo_angle'):
-                return
-            
-        code = self._arm.open_lite6_gripper()
-        if not self._check_code(code, 'open_lite6_gripper'):
+        
+        code = self._arm.set_servo_angle(angle=[166.1, 30.2, 25.3, 75.3, 93.9, -5.4], speed=self._angle_speed, mvacc=self._angle_acc, wait=True, radius=0.0)
+        if not self._check_code(code, 'set_servo_angle'):
             return
-        time.sleep(1)
+        
         
         if tray_num == 1:
             code = self._arm.set_servo_angle(angle=[179.5, 33.5, 32.7, 113.0, 93.1, -2.3], speed=self._angle_speed,
                                              mvacc=self._angle_acc, wait=True, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
                 return
-            # code = self._arm.set_position(*[-255.4, -139.3, 193.5, -12.7, 87.2, -126.1], speed=self._tcp_speed,
-            #                              mvacc=self._tcp_acc, radius=0.0, wait=True)
-            # if not self._check_code(code, 'set_position'):
-            #    return
-            
-            code = self._arm.set_position(*[-257.3, -138.3, 192.1, 68.3, 86.1, -47.0], speed=self._tcp_speed,
+
+            code = self._arm.set_position(*[-257.3, -138.3, 193.1, 68.3, 86.1, -47.0], speed=self._tcp_speed,
                                           mvacc=self._tcp_acc, radius=0.0, wait=True)
             if not self._check_code(code, 'set_position'):
                 return
@@ -258,7 +226,7 @@ class RobotMain(object):
         if not self._check_code(code, 'set_servo_angle'):
             return
 
-        feedback_msg.message = f'grab_capsule{tray_num}_finish'
+        feedback_msg.message = f'grab_capsule_finish'
         goal_handle.publish_feedback(feedback_msg)
 
     def motion_place_capsule(self, goal_handle):
@@ -310,12 +278,11 @@ class RobotMain(object):
                                       mvacc=self._tcp_acc, radius=20.0, wait=False)
         if not self._check_code(code, 'set_position'):
             return
-        code = self._arm.set_cgpio_analog(0, 0)
-        if not self._check_code(code, 'set_cgpio_analog'):
-            return
-        code = self._arm.set_cgpio_analog(1, 5)
-        if not self._check_code(code, 'set_cgpio_analog'):
-            return
+        # code = self._arm.set_servo_angle(angle=[18.1, -0.6, 73.6, 94.8, -66.6, 75.6], speed=self._angle_speed,
+        #                                  mvacc=self._angle_acc, wait=False, radius=30.0)
+        # if not self._check_code(code, 'set_servo_angle'):
+        #     return
+        
         code = self._arm.open_lite6_gripper()
         if not self._check_code(code, 'open_lite6_gripper'):
             return
@@ -334,6 +301,21 @@ class RobotMain(object):
         feedback_msg.message = 'grab_cup_start'
         goal_handle.publish_feedback(feedback_msg)
 
+        code = self._arm.set_cgpio_analog(0, 5)
+        if not self._check_code(code, 'set_cgpio_analog'):
+            return
+        code = self._arm.set_cgpio_analog(1, 5)
+        if not self._check_code(code, 'set_cgpio_analog'):
+            return
+        time.sleep(3)
+        code = self._arm.set_cgpio_analog(0, 0)
+        if not self._check_code(code, 'set_cgpio_analog'):
+            return
+        time.sleep(3)
+        code = self._arm.set_cgpio_analog(1, 0)
+        if not self._check_code(code, 'set_cgpio_analog'):
+            return
+
         code = self._arm.set_position(*[233.4, 10.3, 471.1, -172.2, 87.3, -84.5], speed=self._tcp_speed,
                                       mvacc=self._tcp_acc, radius=20.0, wait=False)
         if not self._check_code(code, 'set_position'):
@@ -347,21 +329,12 @@ class RobotMain(object):
                                          mvacc=self._angle_acc, wait=False, radius=30.0)
         if not self._check_code(code, 'set_servo_angle'):
             return
-        # code = self._arm.set_position(*[193.8, -100.2, 146.6, 135.9, -86.0, -55.3], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
-        # if not self._check_code(code, 'set_position'):
-        #    return
+
         code = self._arm.set_position(*[195.0, -96.5, 200.8, -168.0, -87.1, -110.5], speed=self._tcp_speed,
                                       mvacc=self._tcp_acc, radius=10.0, wait=False)
         if not self._check_code(code, 'set_position'):
             return
-        #code = self._arm.set_position(*[195.0, -96.5, 145.8, -168.0, -87.1, -110.5], speed=self._tcp_speed,
-        #                              mvacc=self._tcp_acc, radius=0.0, wait=True)
-        #if not self._check_code(code, 'set_position'):
-        #    return
-        #code = self._arm.set_position(*[195.5, -96.6, 145.6, 179.0, -87.0, -97.1], speed=self._tcp_speed,
-        #                              mvacc=self._tcp_acc, radius=0.0, wait=True)
-        #if not self._check_code(code, 'set_position'):
-        #    return
+
         code = self._arm.set_position(*[214.0, -100.2, 145.0, -25.6, -88.5, 95.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
         if not self._check_code(code, 'set_position'):
             return
@@ -380,13 +353,6 @@ class RobotMain(object):
         if not self._check_code(code, 'set_servo_angle'):
             return
 
-        code = self._arm.set_cgpio_analog(0, 5)
-        if not self._check_code(code, 'set_cgpio_analog'):
-            return
-        code = self._arm.set_cgpio_analog(1, 5)
-        if not self._check_code(code, 'set_cgpio_analog'):
-            return
-
         time.sleep(0.5)
 
         feedback_msg.message = 'grab_cup_finish'
@@ -398,13 +364,21 @@ class RobotMain(object):
         feedback_msg.message = 'topping_start'
         goal_handle.publish_feedback(feedback_msg)
 
-        # if topping == 1:
-        #     code = self._arm.set_servo_angle(angle=[36.6, -36.7, 21.1, 85.6, 59.4, 44.5], speed=self._angle_speed,
-        #                                      mvacc=self._angle_acc, wait=True, radius=0.0)
-        #     if not self._check_code(code, 'set_servo_angle'):
-        #         return
+        self._angle_speed = 100
+        self._angle_acc = 500
 
-        if topping == 3:
+        # code = self._arm.set_position(*[43.6, 137.9, 350.1, -92.8, 87.5, 5.3], speed=self._tcp_speed,
+        #                                   mvacc=self._tcp_acc, radius=10.0, wait=False)
+        # if not self._check_code(code, 'set_position'):
+        #     return
+
+
+        code = self._arm.set_servo_angle(angle=[61.8, -36.9, 3.5, 148.2, 60.1, 26.3], speed=self._angle_speed,
+                                         mvacc=self._angle_acc, wait=True, radius=0.0)
+        if not self._check_code(code, 'set_servo_angle'):
+            return
+
+        if 3 in topping:
             code = self._arm.set_position(*[43.6, 137.9, 350.1, -92.8, 87.5, 5.3], speed=self._tcp_speed,
                                           mvacc=self._tcp_acc, radius=0.0, wait=True)
             if not self._check_code(code, 'set_position'):
@@ -412,15 +386,12 @@ class RobotMain(object):
             code = self._arm.set_cgpio_digital(2, 1, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
-            code = self._arm.set_position(z=20, radius=0, speed=self._tcp_speed, mvacc=self._tcp_acc, relative=True,
+            code = self._arm.set_position(z=20, radius=0, speed=self._tcp_speed*0.7, mvacc=self._tcp_acc, relative=True,
                                           wait=False)
             if not self._check_code(code, 'set_position'):
                 return
             code = self._arm.set_pause_time(4)
             if not self._check_code(code, 'set_pause_time'):
-                return
-            code = self._arm.set_cgpio_digital(3, 1, delay_sec=0)
-            if not self._check_code(code, 'set_cgpio_digital'):
                 return
             code = self._arm.set_pause_time(4)
             if not self._check_code(code, 'set_pause_time'):
@@ -429,16 +400,16 @@ class RobotMain(object):
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
             
-            code = self._arm.set_position(z=-20, radius=0, speed=self._tcp_speed, mvacc=self._tcp_acc,
+            code = self._arm.set_position(z=-20, radius=0, speed=self._tcp_speed*0.7, mvacc=self._tcp_acc,
                                           relative=True, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
 
-        elif topping == 2:
-            code = self._arm.set_servo_angle(angle=[55.8, -48.2, 14.8, 86.1, 60.2, 58.7], speed=self._angle_speed,
-                                             mvacc=self._angle_acc, wait=False, radius=20.0)
-            if not self._check_code(code, 'set_servo_angle'):
-                return
+        if 2 in topping:
+            # code = self._arm.set_servo_angle(angle=[55.8, -48.2, 14.8, 86.1, 60.2, 58.7], speed=self._angle_speed,
+            #                                  mvacc=self._angle_acc, wait=False, radius=20.0)
+            # if not self._check_code(code, 'set_servo_angle'):
+            #     return
             # code = self._arm.set_servo_angle(angle=[87.5, -48.2, 13.5, 125.1, 44.5, 46.2], speed=self._angle_speed,
             #                                 mvacc=self._angle_acc, wait=True, radius=0.0)
             # if not self._check_code(code, 'set_servo_angle'):
@@ -449,15 +420,12 @@ class RobotMain(object):
             code = self._arm.set_cgpio_digital(1, 1, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
-            code = self._arm.set_position(z=20, radius=0, speed=self._tcp_speed, mvacc=self._tcp_acc, relative=True,
+            code = self._arm.set_position(z=20, radius=0, speed=self._tcp_speed*0.7, mvacc=self._tcp_acc, relative=True,
                                           wait=True)
             if not self._check_code(code, 'set_position'):
                 return
             code = self._arm.set_pause_time(4)
             if not self._check_code(code, 'set_pause_time'):
-                return
-            code = self._arm.set_cgpio_digital(3, 1, delay_sec=0)
-            if not self._check_code(code, 'set_cgpio_digital'):
                 return
             code = self._arm.set_pause_time(4)
             if not self._check_code(code, 'set_pause_time'):
@@ -465,7 +433,7 @@ class RobotMain(object):
             code = self._arm.set_cgpio_digital(1, 0, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
-            code = self._arm.set_position(z=-20, radius=0, speed=self._tcp_speed, mvacc=self._tcp_acc,
+            code = self._arm.set_position(z=-20, radius=0, speed=self._tcp_speed*0.7, mvacc=self._tcp_acc,
                                           relative=True, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
@@ -473,13 +441,18 @@ class RobotMain(object):
                                              mvacc=self._angle_acc, wait=False, radius=10.0)
             if not self._check_code(code, 'set_servo_angle'):
                 return
-            code = self._arm.set_position(*[43.6, 137.9, 350.1, -92.8, 87.5, 5.3], speed=self._tcp_speed,
-                                          mvacc=self._tcp_acc, radius=10.0, wait=False)
-            if not self._check_code(code, 'set_position'):
-                return
+            
 
-        elif topping == 1:
-            code = self._arm.set_position(*[-200.3, 162.8, 359.9, -31.7, 87.8, 96.1], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
+        if 1 in topping:
+            # code = self._arm.set_servo_angle(angle=[36.6, -36.7, 21.1, 85.6, 59.4, 44.5], speed=self._angle_speed,
+            #                                  mvacc=self._angle_acc, wait=True, radius=0.0)
+            # if not self._check_code(code, 'set_servo_angle'):
+            #     return
+            # code = self._arm.set_servo_angle(angle=[144.9, -8.7, 40.4, 24.3, -45.5, -199.3], speed=self._angle_speed,
+            #                                  mvacc=self._angle_acc, wait=True, radius=10.0)
+            # if not self._check_code(code, 'set_servo_angle'):
+            #     return
+            code = self._arm.set_position(*[-200.3, 162.8, 359.9, -31.7, 87.8, 96.1], speed=self._tcp_speed*0.7, mvacc=self._tcp_acc, radius=0.0, wait=True)
             if not self._check_code(code, 'set_position'):
                 return
             code = self._arm.set_cgpio_digital(0, 1, delay_sec=0)
@@ -487,9 +460,6 @@ class RobotMain(object):
                 return
             code = self._arm.set_pause_time(6)
             if not self._check_code(code, 'set_pause_time'):
-                return
-            code = self._arm.set_cgpio_digital(3, 1, delay_sec=0)
-            if not self._check_code(code, 'set_cgpio_digital'):
                 return
             code = self._arm.set_pause_time(2)
             if not self._check_code(code, 'set_pause_time'):
@@ -501,14 +471,11 @@ class RobotMain(object):
                                              mvacc=self._angle_acc, wait=True, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
                 return
-            code = self._arm.set_position(*[-38.2, 132.2, 333.9, -112.9, 86.3, -6.6], speed=self._tcp_speed,
+            code = self._arm.set_position(*[-38.2, 132.2, 333.9, -112.9, 86.3, -6.6], speed=self._tcp_speed*0.7,
                                           mvacc=self._tcp_acc, radius=10.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[43.6, 137.9, 350.1, -92.8, 87.5, 5.3], speed=self._tcp_speed,
-                                          mvacc=self._tcp_acc, radius=10.0, wait=False)
-            if not self._check_code(code, 'set_position'):
-                return
+            
             #code = self._arm.set_position(*[165.1, 162.9, 362.5, -31.7, 86.6, 9.5], speed=self._tcp_speed,
             #                              mvacc=self._tcp_acc, radius=0.0, wait=True)
             #if not self._check_code(code, 'set_position'):
@@ -519,12 +486,15 @@ class RobotMain(object):
             #                                 mvacc=self._angle_acc, wait=True, radius=0.0)
             #if not self._check_code(code, 'set_servo_angle'):
             #    return
-            code = self._arm.set_cgpio_digital(3, 1, delay_sec=0)
-            if not self._check_code(code, 'set_cgpio_digital'):
-                return
+
             code = self._arm.set_servo_angle(angle=[48.4, -13.8, 36.3, 193.6, 42.0, -9.2], speed=self._angle_speed, mvacc=self._angle_acc, wait=True, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
                 return
+
+        code = self._arm.set_position(*[43.6, 137.9, 350.1, -92.8, 87.5, 5.3], speed=self._tcp_speed*0.7,
+                                          mvacc=self._tcp_acc, radius=10.0, wait=False)
+        if not self._check_code(code, 'set_position'):
+            return
 
         time.sleep(0.5)
 
@@ -535,6 +505,10 @@ class RobotMain(object):
         feedback_msg = RobotOrder.Feedback()
         feedback_msg.message = 'making_icecream_start'
         goal_handle.publish_feedback(feedback_msg)
+
+        code = self._arm.set_cgpio_digital(3, 1, delay_sec=0)
+        if not self._check_code(code, 'set_cgpio_digital'):
+            return
 
         code = self._arm.set_servo_angle(angle=[48.4, -13.8, 36.3, 193.6, 42.0, -9.2], speed=self._angle_speed, mvacc=self._angle_acc, wait=True, radius=0.0)
         if not self._check_code(code, 'set_servo_angle'):
@@ -601,21 +575,21 @@ class RobotMain(object):
             if not self._check_code(code, 'set_position'):
                 return
             
-            code = self._arm.set_position(z=-18, radius=0, speed=self._tcp_speed, mvacc=self._tcp_acc, relative=True,
+            code = self._arm.set_position(z=-15, radius=0, speed=self._tcp_speed, mvacc=self._tcp_acc, relative=True,
                                           wait=True)
             if not self._check_code(code, 'set_position'):
                 return
             code = self._arm.open_lite6_gripper()
             if not self._check_code(code, 'open_lite6_gripper'):
                 return
-            time.sleep(1)
-            code = self._arm.set_position(*[-256.2, -126.6, 204.1, -179.2, 77.2, 66.9], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
-            if not self._check_code(code, 'set_position'):
-                return
+            time.sleep(1.5)
             code = self._arm.stop_lite6_gripper()
             if not self._check_code(code, 'stop_lite6_gripper'):
                 return
             time.sleep(0.5)
+            code = self._arm.set_position(*[-256.2, -126.6, 204.1, -179.2, 77.2, 66.9], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
+            if not self._check_code(code, 'set_position'):
+                return
             code = self._arm.set_position(*[-242.8, -96.3, 205.5, -179.2, 77.2, 66.9], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
             if not self._check_code(code, 'set_position'):
                 return
@@ -638,14 +612,14 @@ class RobotMain(object):
             code = self._arm.open_lite6_gripper()
             if not self._check_code(code, 'open_lite6_gripper'):
                 return
-            time.sleep(1)
-            code = self._arm.set_position(*[-165.0, -122.7, 195.7, -178.7, 80.7, 92.5], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
-            if not self._check_code(code, 'set_position'):
-                return
+            time.sleep(1.5)
             code = self._arm.stop_lite6_gripper()
             if not self._check_code(code, 'stop_lite6_gripper'):
                 return
             time.sleep(0.5)
+            code = self._arm.set_position(*[-165.0, -122.7, 195.7, -178.7, 80.7, 92.5], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
+            if not self._check_code(code, 'set_position'):
+                return
             code = self._arm.set_position(*[-165.9, -81.9, 195.4, -178.7, 80.7, 92.5], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
             if not self._check_code(code, 'set_position'):
                 return
@@ -671,14 +645,14 @@ class RobotMain(object):
             code = self._arm.open_lite6_gripper()
             if not self._check_code(code, 'open_lite6_gripper'):
                 return
-            time.sleep(1)
-            code = self._arm.set_position(*[-78.5, -132.8, 203.6, -176.8, 76.1, 123.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
-            if not self._check_code(code, 'set_position'):
-                return
+            time.sleep(1.5)
             code = self._arm.stop_lite6_gripper()
             if not self._check_code(code, 'stop_lite6_gripper'):
                 return
             time.sleep(0.5)
+            code = self._arm.set_position(*[-78.5, -132.8, 203.6, -176.8, 76.1, 123.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
+            if not self._check_code(code, 'set_position'):
+                return
             code = self._arm.set_position(*[-93.0, -107.5, 205.5, -176.8, 76.1, 123.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=True)
             if not self._check_code(code, 'set_position'):
                 return
@@ -802,35 +776,6 @@ class RobotMain(object):
 
         feedback_msg.message = 'trash_capsule_finish'
         goal_handle.publish_feedback(feedback_msg)
-
-
-
-
-    # Robot Main Run
-    def run(self):
-        try:
-            self.motion_home()
-            self.order_msg = {'makeReq': {'jigNum': 'A'}}
-            self.motion_grab_capsule()
-            self.motion_place_capsule()
-            self.order_msg['makeReq']['cupNum'] = 'B'
-            self.motion_grab_cup()
-            self.order_msg['makeReq']['topping'] = '1'
-            self.motion_topping()
-            self.motion_make_icecream()
-            self.motion_serve()
-            self.motion_trash_capsule()
-            self.motion_home()
-            print('icecream finish')
-
-
-        except Exception as e:
-            self.pprint('MainException: {}'.format(e))
-        self.alive = False
-        self._arm.release_error_warn_changed_callback(self._error_warn_changed_callback)
-        self._arm.release_state_changed_callback(self._state_changed_callback)
-        if hasattr(self._arm, 'release_count_changed_callback'):
-            self._arm.release_count_changed_callback(self._count_changed_callback)
 
 
 class RobotActionServer(Node):
