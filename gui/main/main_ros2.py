@@ -1,11 +1,13 @@
 import sys
-#import rclpy
+import rclpy as rp
 from admin_page import AdminPage
-#from rclpy.node import Node
-#from std_msgs.msg import String
-from PyQt5.QtCore import Qt, QTimer
+from rclpy.node import Node
+from rclpy.executors import MultiThreadedExecutor
+from PyQt5.QtCore import Qt, QTimer, pyqtSignal, QObject, QThread
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox
+from robot_msgs.msg import UserOrder
+from robot_msgs.msg import RobotState
 from PyQt5.QtGui import *
 
 '''
@@ -21,7 +23,38 @@ class Order_ice_cream(Node):
         self.get_logger().info(f'Publishing: "{msg.data}"')
         self.publisher_.publish(msg)
 '''
+
+
+class RobotStateSubscriber(Node, QObject):
+    msg_received = pyqtSignal(list)
+
+    def __init__(self):
+        Node.__init__(self, 'robot_state_subscriber_UI')
+        QObject.__init__(self)
+
+        self.subscription = self.create_subscription(RobotState, '/robot_state', self.robot_state_sub_callback, 10)
+        self.subscription
+    
+    def robot_state_sub_callback(self, msg):
+        temperature_list = list(msg.temperatures)
+        self.msg_received.emit(temperature_list)
+
+class Ros2ExecutorThread(QThread):
+    def __init__(self):
+        super().__init__()
+        self.executor = MultiThreadedExecutor()
+        self.robot_state_subscriber = RobotStateSubscriber()
+        self.executor.add_node(self.robot_state_subscriber)
+    
+    def run(self):
         
+        self.executor.spin()
+    
+    def stop(self):
+        self.executor.shutdown()
+        
+
+
 # DynamicButtonWidget 정의
 class DynamicButtonWidget(QtWidgets.QWidget):
     def __init__(self):
@@ -82,6 +115,17 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
 
+        rp.init()
+        self.node = rp.create_node('ice_cream_selector')
+        self.publisher = self.node.create_publisher(UserOrder, '/user_order',10)
+        self.executor_thread = Ros2ExecutorThread()
+        self.executor_thread.robot_state_subscriber.msg_received.connect(self.update_state)
+        self.executor_thread.start()
+
+        self.ice_cream_selected = None
+        self.topping_selected = None
+        self.topping_type_selected = None
+
         # 각 페이지 UI 파일 로드
         self.page1 = uic.loadUi("./main_page.ui")
         self.page2 = uic.loadUi("./select_ice_cream_page.ui")
@@ -115,23 +159,16 @@ class MainWindow(QtWidgets.QMainWindow):
         self.page4.last_pic.resize(self.pixmap.width(), self.pixmap.height())
 
 
-
-
-
         # 페이지 전환을 위한 버튼 클릭 이벤트 설정
         self.page1.select_ice_cream.clicked.connect(self.show_page2)
         self.page2.back_button.clicked.connect(self.show_page1)
-        self.page2.select_complete.clicked.connect(self.show_page3)
+        self.page2.select_complete.clicked.connect(lambda: (self.publish_selection(), self.show_page3()))
         self.page3.back_button.clicked.connect(self.show_page2)
         
-        # 다음 페이지로 이동하도록 타이머 설정
-        self.timer_1 = QtCore.QTimer(self)
-        self.timer_1.setSingleShot(True)
-        self.timer_1.timeout.connect(self.show_page4)
-
-        self.timer_2 = QtCore.QTimer(self)
-        self.timer_2.setSingleShot(True)
-        self.timer_2.timeout.connect(self.show_page1)          
+        # 페이지3에서 페이지4로 1초 후에 이동하도록 타이머 설정
+        self.timer = QtCore.QTimer(self)
+        self.timer.setSingleShot(True)
+        self.timer.timeout.connect(self.show_page4)        
         
 
         # 그룹별 버튼 설정
@@ -198,9 +235,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # 이미지 더블클릭 시 관리자 페이지로 전환
         print("Logo clicked! Switching to AdminPage.")
         #self.stacked_widget.setCurrentWidget(self.page5)  # 기존 페이지 5를 AdminPage로 전환
-        #if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
-        self.admin_page_window = AdminPage()  # AdminPage 객체 생성
-        self.admin_page_window.show()  # AdminPage 창 열기
+        if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
+            self.admin_page_window = AdminPage()  # AdminPage 객체 생성
+            self.admin_page_window.show()  # AdminPage 창 열기
     
 
     def resizeEvent(self, event):
@@ -227,7 +264,17 @@ class MainWindow(QtWidgets.QMainWindow):
         selected_button.setStyleSheet(
             f"background-color: lightgray; color: black;" if "background-color: " + color in current_color else f"background-color: {color}; color: black;"
         )
+        self.update_selection(button_group, selected_button)
         self.check_selection_complete()
+    
+    def update_selection(self, button_group, selected_button):
+        # 선택 상태를 업데이트
+        if button_group == self.ice_cream_buttons:
+            self.ice_cream_selected = selected_button.text()  # 예: "초코 아이스크림"
+        elif button_group == self.topping_buttons:
+            self.topping_selected = selected_button.text()    # 예: "초코볼"
+        elif button_group == self.method_buttons:
+            self.method_selected = selected_button.text()     # 예: "가운데"
 
     def reset_button_colors(self):
         # 모든 선택 버튼 색상 초기화 및 'select_complete' 비활성화
@@ -235,6 +282,9 @@ class MainWindow(QtWidgets.QMainWindow):
         #for button in self.ice_cream_buttons + self.method_buttons:
             button.setStyleSheet("background-color: lightgray; color: black;")
         self.page2.select_complete.setEnabled(False)
+        self.ice_cream_selected = None
+        self.topping_selected = None
+        self.method_selected = None
 
     def check_selection_complete(self):
         # 모든 그룹의 선택 상태 확인
@@ -254,18 +304,36 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def show_page3(self):
         self.stacked_widget.setCurrentWidget(self.page3)
-        self.timer_1.start(1000)  # 1초 후에 show_page4 호출
+        self.timer.start(1000)  # 1초 후에 show_page4 호출
 
     def show_page4(self):
         self.stacked_widget.setCurrentWidget(self.page4)
-        self.timer_2.start(5000)  # 5초 후에 show_page4 호출
 
     def show_page5(self):
         self.stacked_widget.setCurrentWidget(self.page5)
+    
+    def publish_selection(self):
+        # ROS2 메시지에 선택 상태를 설정하고 발행
+        msg = UserOrder()
+        msg.action = 'icecreaming'
+        msg.icecream = self.ice_cream_selected
+        msg.topping = self.topping_selected
+        msg.topping_type = self.method_selected
+        self.publisher.publish(msg)
+        self.node.get_logger().info(f"Ice Cream: {self.ice_cream_selected}, Topping: {self.topping_selected}, Topping_type: {self.method_selected}")
+    
+    def update_state(self, msg):
+        print(msg)
+
+    def closeEvent(self, event):
+        self.executor_thread.stop()
+        self.robot_state_subscriber.destroy_node()
+        rp.shutdown()
+        event.accept()
 
 # 메인 함수 정의
 def main(args=None):
-    #rclpy.init(args=args)  # ROS 2 초기화
+    #rp.init(args=args)  # ROS 2 초기화
 
     # PyQt 애플리케이션 초기화
     app = QtWidgets.QApplication(sys.argv)

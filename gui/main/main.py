@@ -6,6 +6,7 @@ from admin_page import AdminPage
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox
+from PyQt5.QtGui import *
 
 '''
 # Order_ice_cream 클래스 정의
@@ -101,11 +102,20 @@ class MainWindow(QtWidgets.QMainWindow):
         self.stacked_widget.addWidget(self.page3)
         self.stacked_widget.addWidget(self.page4)
         self.stacked_widget.addWidget(self.page5)  # 관리자 페이지
+
+        #주문 선택 버튼 비활성화
+        self.page2.select_complete.setEnabled(False)
         
         # 이미지 추가 (그래픽 뷰에 이미지 삽입)
-        self.add_image_to_label("./image/last_pic.png", self.page4.last_pic)
         self.add_image_to_label("./image/logo.png", self.page1.logo)
         self.add_image_to_label("./image/main_pic.png", self.page1.main_pic)
+        #self.add_image_to_label("./image/last_pic.png", self.page4.last_pic)
+
+        self.pixmap = QPixmap()
+        self.pixmap.load("./image/last_pic.png")
+
+        self.page4.last_pic.setPixmap(self.pixmap)
+        self.page4.last_pic.resize(self.pixmap.width(), self.pixmap.height())
 
         # 페이지 전환을 위한 버튼 클릭 이벤트 설정
         self.page1.select_ice_cream.clicked.connect(self.show_page2)
@@ -183,9 +193,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # 이미지 더블클릭 시 관리자 페이지로 전환
         print("Logo clicked! Switching to AdminPage.")
         #self.stacked_widget.setCurrentWidget(self.page5)  # 기존 페이지 5를 AdminPage로 전환
-        if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
-            self.admin_page_window = AdminPage()  # AdminPage 객체 생성
-            self.admin_page_window.show()  # AdminPage 창 열기
+        #if not hasattr(self, 'admin_page_window'):  # 이미 창이 열려 있는지 확인
+        self.admin_page_window = AdminPage()  # AdminPage 객체 생성
+        self.admin_page_window.show()  # AdminPage 창 열기
     
 
     def resizeEvent(self, event):

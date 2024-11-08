@@ -1,6 +1,8 @@
 import sys
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-from database.gui.inventory.inventoryConnect import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+#from database.gui.inventory.inventoryConnect import *
 
 class AdminPage(QtWidgets.QMainWindow):  # QMainWindow로 변경
     def __init__(self):
@@ -20,7 +22,7 @@ class AdminPage(QtWidgets.QMainWindow):  # QMainWindow로 변경
         self.showMaximized()
 
         # 콤보박스 설정
-        print(selectIceCream())
+        #print(selectIceCream())
 
         ice_cream_list = (" ", "초코 아이스크림", "딸기 아이스크림", "바닐라 아이스크림", "품절")
        # ice_cream_list = str(selectIceCream())
@@ -58,6 +60,21 @@ class AdminPage(QtWidgets.QMainWindow):  # QMainWindow로 변경
 
          # Close button 연결
         self.page5.admin_page_close_button.clicked.connect(self.close_with_data)
+
+
+        # 재고 표시 테이블
+        self.inventory_table = self.findChild(QtWidgets.QTableWidget, "inventory_table")
+
+        # 재고 가상 자료
+        row = self.inventory_table.rowCount()
+        self.inventory_table.insertRow(row)
+        self.inventory_table.setItem(row, 0, QTableWidgetItem("딸기 아이스크림"))
+        self.inventory_table.setItem(row, 1, QTableWidgetItem("12개"))
+        self.inventory_table.setItem(row, 2, QTableWidgetItem("맛있다"))
+
+        # 열 크기 조절
+        self.inventory_table.resizeColumnsToContents()
+
 
     def setup_combo_box(self, combo_box, items, combo_box_name):
         """콤보박스를 설정하고 선택된 항목 출력 연결"""
