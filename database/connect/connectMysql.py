@@ -11,9 +11,7 @@ conn = mysql.connector.connect(
 )
 
 
-"""
-# 커서 생성
-cursor = conn.cursor()
+"""cursor = conn.cursor()
 
 # 쿼리 실행 예시
 sql_query = "SELECT * FROM user"
@@ -32,4 +30,3 @@ conn.close()
 
 
 """
-

@@ -14,16 +14,76 @@ def insertInventory(param):
     #conn.close()
 
 
-# MySQL 서버에 연결
-def selectIceCream():
+# 아이스크림(마스터) 리스트 가져오기
+def selectIceCreamList():
+    result=[]
     cursor = conn.cursor()
-    sql = "SELECT GROUP_CONCAT(iceName) FROM ICECREAM WHERE useYN = 'Y'"
+    sql = "SELECT iceName FROM ICECREAM WHERE useYN = 'Y'"
     print(sql)
     cursor.execute(sql)
-    result = cursor.fetchone()
+    while (True):
+        row = cursor.fetchone()
+        if row == None:
+            break;
+        result.append(row[0])
+    conn.commit()
     cursor.close()
-    #conn.close()
     return result
+
+
+
+
+# 아이스크림(마스터) 딕셔너리 가져오기
+def selectIceCreamDict():
+    result={}
+    cursor = conn.cursor()
+    sql = "SELECT iceName, iceCode FROM ICECREAM WHERE useYN = 'Y'"
+    print(sql)
+    cursor.execute(sql)
+    while (True):
+        row = cursor.fetchone()
+        if row == None:
+            break;
+        result[row[0]] = row[1]
+    conn.commit()
+    cursor.close()
+    return result
+
+
+# 토핑(마스터) 리스트 가져오기
+def selectToppingList():
+    result=[]
+    cursor = conn.cursor()
+    sql = "SELECT toppingName FROM TOPPING WHERE useYN = 'Y'"
+    print(sql)
+    cursor.execute(sql)
+    while (True):
+        row = cursor.fetchone()
+        if row == None:
+            break;
+        result.append(row[0])
+    conn.commit()
+    cursor.close()
+    return result
+
+
+ #토핑(마스터) 딕셔너리 가져오기
+def selectToppingDict():
+    result={}
+    cursor = conn.cursor()
+    sql = "SELECT toppingName, toppingCode FROM TOPPING WHERE useYN = 'Y'"
+    print(sql)
+    cursor.execute(sql)
+    while (True):
+        row = cursor.fetchone()
+        if row == None:
+            break;
+        result[row[0]] = row[1]
+    conn.commit()
+    cursor.close()
+    return result
+
+
 
 #from database.gui.inventory.inventoryConnect import insertInventory
 #invertoryInfo = {}
