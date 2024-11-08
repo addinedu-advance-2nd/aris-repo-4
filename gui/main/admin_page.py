@@ -2,7 +2,7 @@ import sys
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-#from database.gui.inventory.inventoryConnect import *
+from database.gui.inventory.inventoryConnect import *
 
 class AdminPage(QtWidgets.QMainWindow):  # QMainWindow로 변경
     def __init__(self):
@@ -22,11 +22,16 @@ class AdminPage(QtWidgets.QMainWindow):  # QMainWindow로 변경
         self.showMaximized()
 
         # 콤보박스 설정
-        #print(selectIceCream())
+        # 아이스크림
+        ice_cream_list = selectIceCreamList()
+        ice_cream_list.insert(0, " ")
 
-        ice_cream_list = (" ", "초코 아이스크림", "딸기 아이스크림", "바닐라 아이스크림", "품절")
-       # ice_cream_list = str(selectIceCream())
-        topping_list = (" ", "초코", "캬라멜", "딸기", "품절")
+        # 토핑
+        topping_list = selectToppingList()
+        topping_list.insert(0, " ")
+
+        #ice_cream_list = (" ", "초코 아이스크림", "딸기 아이스크림", "바닐라 아이스크림", "품절")
+        #topping_list = (" ", "초코", "캬라멜", "딸기", "품절")
         self.setup_combo_box(self.page5.ice_cream_combobox_1, ice_cream_list, "아이스크림 1")
         self.setup_combo_box(self.page5.ice_cream_combobox_2, ice_cream_list, "아이스크림 2")
         self.setup_combo_box(self.page5.ice_cream_combobox_3, ice_cream_list, "아이스크림 3")
@@ -129,6 +134,7 @@ class AdminPage(QtWidgets.QMainWindow):  # QMainWindow로 변경
             "topping_2": self.page5.topping_combobox_2.currentText(),
             "topping_3": self.page5.topping_combobox_3.currentText(),
         }
+
         print("콤보박스 선택 상태:", combo_box_data)
         self.close()  # 창 닫기
 

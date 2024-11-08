@@ -7,6 +7,7 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox
 from PyQt5.QtGui import *
+from database.gui.sales.salesConnect import *
 
 '''
 # Order_ice_cream 클래스 정의
@@ -36,9 +37,16 @@ class DynamicButtonWidget(QtWidgets.QWidget):
         self.topping_type = []
 
         # DB에서 가져온 예시 데이터 (버튼 이름들)
+        """v
         button_groups = {
             1: ['Chocolate', 'Vanilla', 'Strawberry'],  # 그룹 1
             2: ['Chocoball', 'Caramel', 'Strawberry Topping'],  # 그룹 2
+            3: ['Middle', 'Bottom']  # 그룹 3
+        }
+        """
+        button_groups = {
+            1: selectSaleIceCream(),  # 그룹 1
+            2: selectSaleTopping(),  # 그룹 2
             3: ['Middle', 'Bottom']  # 그룹 3
         }
 
@@ -241,6 +249,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.page2.select_complete.setEnabled(ice_cream_selected and topping_selected and method_selected)
 
     def show_page2(self):
+        self.dynamic_button_widget = DynamicButtonWidget()
+        self.page2.layout().addWidget(self.dynamic_button_widget)  # page2에 동적 버튼 위젯 추가
+
         self.stacked_widget.setCurrentWidget(self.page2)
 
     def show_page1(self):
